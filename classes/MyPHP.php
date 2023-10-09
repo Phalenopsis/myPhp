@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Try to redo some php functions
+ */
 class MyPHP
 {
     /**
@@ -46,6 +49,12 @@ class MyPHP
         return false;
     }
 
+    /**
+     * Counts the occurrences of each distinct value in an array
+     *
+     * @param array $array
+     * @return array
+     */
     public function my_array_count_values(array $array): array
     {
         $tabReturn = [];

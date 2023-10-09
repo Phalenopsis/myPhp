@@ -3,7 +3,9 @@ require_once "MyPHP.php";
 require_once "CompareFunctions.php";
 
 
-
+/**
+ * Use to test and compare methods from MyPhp and native PHP
+ */
 class TestMyPHP
 {
 
