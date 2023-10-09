@@ -1,5 +1,5 @@
 <?php
-require_once "classes/Test.php";
+require_once "classes/TestMyPHP.php";
 
 
 // name of original function
@@ -21,5 +21,11 @@ foreach ($tabs as $tab) {
     }
 }
 
-// do test
+
+$functionTested = "array_count_values";
+$tabtest = [1, "hello", 1, "world", "hello"];
+$tabtest2 = [1, "1", 0, ""];
+$tests = [[$tabtest], [$tab1], [$tab2], [$tabtest2]]; // 
+
+//do test
 new TestMyPHP($functionTested, $tests);

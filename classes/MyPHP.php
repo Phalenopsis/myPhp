@@ -45,4 +45,18 @@ class MyPHP
         }
         return false;
     }
+
+    public function my_array_count_values(array $array): array
+    {
+        $tabReturn = [];
+        foreach ($array as $value) {
+
+            if (gettype($value) === "string" || gettype($value === "int")) {
+                array_key_exists($value, $tabReturn) ? $tabReturn[$value] += 1 : $tabReturn[$value] = 1;
+            } else {
+                //raise error E_WARNING 
+            }
+        }
+        return $tabReturn;
+    }
 }
