@@ -68,4 +68,23 @@ class MyPHP
         }
         return $tabReturn;
     }
+
+    public function my_max(mixed $value,  mixed ...$values): mixed
+    {
+        if (gettype($value) === "array") {
+            $searchArr = $value;
+        } else {
+            $searchArr = [$value, ...$values];
+        }
+
+        $max = null;
+        foreach ($searchArr as $val) {
+            if ($max === null) {
+                $max = $val;
+            } elseif ($val > $max) {
+                $max = $val;
+            }
+        }
+        return $max;
+    }
 }

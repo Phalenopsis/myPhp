@@ -5,6 +5,7 @@ require_once "CompareFunctions.php";
 
 /**
  * Use to test and compare methods from MyPhp and native PHP
+ * tests passed to TestMyPHP must be an array contains array tests 
  */
 class TestMyPHP
 {
@@ -127,6 +128,8 @@ class TestMyPHP
             $resultWrited = "true";
         } elseif ($result === false) {
             $resultWrited = "false";
+        } elseif ($result === null) {
+            $resultWrited = "null";
         } else {
             $resultWrited = $result;
         }
