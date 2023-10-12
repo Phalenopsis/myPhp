@@ -87,4 +87,22 @@ class MyPHP
         }
         return $max;
     }
+    public function my_min(mixed $value,  mixed ...$values): mixed
+    {
+        if (gettype($value) === "array") {
+            $searchArr = $value;
+        } else {
+            $searchArr = [$value, ...$values];
+        }
+
+        $min = null;
+        foreach ($searchArr as $val) {
+            if ($min === null) {
+                $min = $val;
+            } elseif ($val < $min) {
+                $min = $val;
+            }
+        }
+        return $min;
+    }
 }

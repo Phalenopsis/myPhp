@@ -31,7 +31,7 @@ $tests = [[$tabtest], [$tab1], [$tab2], [$tabtest2]]; //
 new TestMyPHP($functionTested, $tests); */
 
 
-$functionTested = "max";
+$functionTested = "min";
 $tab = [0, 25, 23, 45, 12, 7, 22];
 $tab2 = [-1, -5, -25, -71];
 $tab3 = ['resul2021' => 25, 'resul2022' => 32, 'resul2023' => 19];
