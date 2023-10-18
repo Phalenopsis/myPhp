@@ -86,7 +86,7 @@ class TestMyPHP
         $message = substr($message, 0, -1) . PHP_EOL;
         foreach ($testResult["functions"] as $function => $result) {
 
-            $message .= $function . " return " . $this->writeResult($result) . PHP_EOL;
+            $message .= $function . " return " . $this->writeArgument($result) . PHP_EOL;
         }
         $message .= "\033[31m end Failure\033[0m" . PHP_EOL;
         return $message;

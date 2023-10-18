@@ -30,7 +30,7 @@ $tests = [[$tabtest], [$tab1], [$tab2], [$tabtest2]]; //
 //do test
 new TestMyPHP($functionTested, $tests); */
 
-
+/*
 $functionTested = "min";
 $tab = [0, 25, 23, 45, 12, 7, 22];
 $tab2 = [-1, -5, -25, -71];
@@ -39,3 +39,16 @@ $tab4 = ["6ab c", "9ab c", "10ab c",  "75bf rt", "cpo m", "do ps", "et er", "fp 
 $tab5 = [99, 1, 2, 3, 4];
 $tests = [[$tab], [$tab2], [$tab3], [$tab4], $tab2, $tab4, $tab5];
 new TestMyPHP($functionTested, $tests);
+*/
+
+$function = 'array_diff';
+
+$array1 = [1, 2, 3, 4];
+$array2 = [1, 2, 3, 4, 5];
+$array3 = [7, 8];
+
+$tab1 = array("a" => "green", "red", "blue", "red");
+$tab2 = array("b" => "green", "yellow", "red");
+
+$tests = [[$array1, $array2, $array3], [$array3, $array2, $array1], [$tab1, $tab2], [$tab2, $tab1]];
+new TestMyPHP($function, $tests);

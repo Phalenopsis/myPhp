@@ -105,4 +105,19 @@ class MyPHP
         }
         return $min;
     }
+
+    public function my_array_diff(array $array, array ...$arrays): array
+    {
+        $filters = [];
+        foreach ($arrays as $filter) {
+            $filters = array_merge($filters, $filter);
+        }
+        $result = [];
+        foreach ($array as $key => $elt) {
+            if (!in_array($elt, $filters)) {
+                $result[$key] = $elt;
+            }
+        }
+        return $result;
+    }
 }
