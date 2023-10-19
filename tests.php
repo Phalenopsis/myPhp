@@ -41,7 +41,7 @@ $tests = [[$tab], [$tab2], [$tab3], [$tab4], $tab2, $tab4, $tab5];
 new TestMyPHP($functionTested, $tests);
 */
 
-$function = 'array_diff';
+/* $function = 'array_diff';
 
 $array1 = [1, 2, 3, 4];
 $array2 = [1, 2, 3, 4, 5];
@@ -50,5 +50,17 @@ $array3 = [7, 8];
 $tab1 = array("a" => "green", "red", "blue", "red");
 $tab2 = array("b" => "green", "yellow", "red");
 
-$tests = [[$array1, $array2, $array3], [$array3, $array2, $array1], [$tab1, $tab2], [$tab2, $tab1]];
+$tests = [[$array1, $array2, $array3], [$array3, $array2, $array1], [$tab1, $tab2], [$tab2, $tab1]]; */
+
+$function = "strcmp";
+
+$test1 = ['Bonjour', 'Bonjour'];
+$test2 = ['Bonjour', 'bonjour'];
+$test3 = ['Bonjour', 'Bonjour1'];
+$test4 = ['Bonjour1', 'Bonjour'];
+$test5 = ['zzzz', 'zzz'];
+$test6 = ['zzz', 'zzzz'];
+
+
+$tests = [$test1, $test2, $test3, $test4, $test5, $test6];
 new TestMyPHP($function, $tests);

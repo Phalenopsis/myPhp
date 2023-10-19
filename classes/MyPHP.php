@@ -120,4 +120,31 @@ class MyPHP
         }
         return $result;
     }
+
+    public function my_compare($a, $b)
+    {
+        if ($a > $b) {
+            return 1;
+        } elseif ($a === $b) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
+    public function my_strcmp($string1, $string2): int
+    {
+        $len1 = strlen($string1);
+        $len2 = strlen($string2);
+        $return = $this->my_compare($len1, $len2);
+        $charCompare = 0;
+
+        for ($i = 0; $i < (min($len1, $len2)); $i += 1) {
+            $charCompare = $this->my_compare($string1[$i], $string2[$i]);
+            if ($charCompare !== 0) {
+                return $charCompare;
+            }
+        }
+        return $return;
+    }
 }

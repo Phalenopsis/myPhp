@@ -1,5 +1,5 @@
 <?php
-
+/* 
 function my_array_diff(array $array, array ...$arrays): array
 {
     $filters = [];
@@ -33,3 +33,46 @@ var_dump($myResult1);
 echo "test2" . PHP_EOL;
 var_dump($result2);
 var_dump($myResult2);
+ */
+
+function compare($a, $b)
+{
+    if ($a > $b) {
+        return 1;
+    } elseif ($a === $b) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+
+function my_strcmp($string1, $string2)
+{
+    $len1 = strlen($string1);
+    $len2 = strlen($string2);
+    $return = compare($len1, $len2);
+    $charCompare = 0;
+
+    for ($i = 0; $i < (min($len1, $len2)); $i += 1) {
+        $charCompare = compare($string1[$i], $string2[$i]);
+        if ($charCompare !== 0) {
+            return $charCompare;
+        }
+    }
+    return $return;
+}
+
+$var1 = "B";
+$var2 = "C";
+
+echo strcmp($var1, $var2);
+
+echo PHP_EOL;
+
+if ($var1 > $var2) {
+    echo 1;
+} elseif ($var1 === $var2) {
+    echo 0;
+} else {
+    echo -1;
+}
