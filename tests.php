@@ -52,15 +52,34 @@ $tab2 = array("b" => "green", "yellow", "red");
 
 $tests = [[$array1, $array2, $array3], [$array3, $array2, $array1], [$tab1, $tab2], [$tab2, $tab1]]; */
 
+/*
 $function = "strcmp";
 
 $test1 = ['Bonjour', 'Bonjour'];
 $test2 = ['Bonjour', 'bonjour'];
 $test3 = ['Bonjour', 'Bonjour1'];
 $test4 = ['Bonjour1', 'Bonjour'];
-$test5 = ['zzzz', 'zzz'];
-$test6 = ['zzz', 'zzzz'];
+$test5 = ['aaaa', 'zzz'];
+$test6 = ['zzz', 'aaaa'];
+*/
+
+$function = 'array_is_list';
+$function = 'array_flip';
+
+$tab = [0, 2, 4, [8]];
+$tab1 = [0, 2, 4, 8, '4' => 10];
+$tab2 = ['test' => 8, 5, 7];
+$tab3 = [false => 'test', '1' => 'ultime', 2];
+$tab4 = [-1 => 7, 1, 8, 9];
+$tab5 = [-1 => 7, 0 => 1, 1 => 8, 2 => 9];
+$tab6 = [0, 2, '3' => 4, 6, 8];
+$tab7 = ['0' => 1, '1' => 2, '2' => 4, '3' => 3];
+$tab8 = [1, 2, true, 4, 5, 6, 7, 1, 11, 12.3, 13, 14, 15, 16];
 
 
-$tests = [$test1, $test2, $test3, $test4, $test5, $test6];
+$tests = [[$tab], [$tab1], [$tab2], [$tab3], [$tab4], [$tab5], [$tab6], [$tab7], [$tab8]];
 new TestMyPHP($function, $tests);
+
+//var_dump(3 === '3');
+
+//var_dump(array_is_list($tab7));

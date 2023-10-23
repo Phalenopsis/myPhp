@@ -134,15 +134,52 @@ class MyPHP
 
     public function my_strcmp($string1, $string2): int
     {
-        $len1 = strlen($string1);
-        $len2 = strlen($string2);
-        $return = $this->my_compare($len1, $len2);
+
         $charCompare = 0;
 
-        for ($i = 0; $i < (min($len1, $len2)); $i += 1) {
+        $i = 0;
+        while (isset($string1[$i]) && isset($string2[$i])) {
             $charCompare = $this->my_compare($string1[$i], $string2[$i]);
             if ($charCompare !== 0) {
                 return $charCompare;
+            }
+            $i += 1;
+        }
+
+        $len1 = strlen($string1);
+        $len2 = strlen($string2);
+        $return = $this->my_compare($len1, $len2);
+
+        return $return;
+    }
+
+    public function my_array_is_list(array $array): bool
+    {
+        $i = 0;
+        /* while (isset($array[$i])) {
+            $i += 1;
+        }
+        if ($i === count($array)) {
+            return true;
+        } */
+        foreach ($array as $key => $_) {
+            if ($key === $i) {
+                $i += 1;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function my_array_flip(array $array): array
+    {
+        $return = [];
+        foreach ($array as $key => $value) {
+            if (gettype($value) === 'string' || gettype($value) === 'integer') {
+                $return[$value] = $key;
+            } else {
+                // lancer warning
             }
         }
         return $return;

@@ -34,7 +34,7 @@ echo "test2" . PHP_EOL;
 var_dump($result2);
 var_dump($myResult2);
  */
-
+/* 
 function compare($a, $b)
 {
     if ($a > $b) {
@@ -76,3 +76,78 @@ if ($var1 > $var2) {
 } else {
     echo -1;
 }
+ */
+/* $tab = [0, 2, 4, 8];
+$tab2 = ['test' => 8, 5, 7];
+$tab3 = [false => 'test', '1' => 'ultime', 2];
+$tab4 = [-1 => 7, 1, 8, 9];
+$tab5 = [-1 => 7, 0 => 1, 1 => 8, 2 => 9];
+$tab6 = [0, 2, '3' => 4, 6, 8];
+
+
+
+function my_array_is_list(array $array): bool
+{
+    $i = 0;
+    while (isset($array[$i])) {
+        $i += 1;
+    }
+    if ($i === count($array)) {
+        return true;
+    }
+    return false;
+}
+
+var_dump(array_is_list($tab));
+var_dump(my_array_is_list($tab));
+echo PHP_EOL;
+
+var_dump(array_is_list($tab2));
+var_dump(my_array_is_list($tab2));
+
+echo PHP_EOL;
+
+var_dump(array_is_list($tab3));
+var_dump(my_array_is_list($tab3));
+
+
+echo PHP_EOL;
+
+var_dump(array_is_list($tab4));
+var_dump(my_array_is_list($tab4));
+echo PHP_EOL;
+
+var_dump(array_is_list($tab5));
+var_dump(my_array_is_list($tab5));
+//var_dump('2' + 1 == '3');
+
+var_dump($tab5); */
+/* 
+$tab = [true => 0, '2' => 'toto', 'tata' => '25', '123a' => 'osef'];
+
+foreach ($tab as $key => $_) {
+    var_dump($key);
+} */
+
+/* var_dump(is_numeric('123a'));
+var_dump(is_numeric('4'));
+
+var_dump(intval('123a')); */
+
+//var_dump(array_is_list(['0' => 1]));
+
+$tab = ['4' => 25, '7' => 78];
+
+/* foreach ($tab as $key => $value) {
+    if ($key === '4') {
+        echo 'la clé === "4"' . PHP_EOL;
+    } else {
+        echo 'ça marche pas' . PHP_EOL;
+    }
+}
+ */
+
+//var_dump(array_flip($tab));
+
+$tab2 = [1, 2, 3, 4, 5, 6, 7, 1, 11, 12, 13, 14, 15, 16];
+var_dump(array_flip($tab2));
