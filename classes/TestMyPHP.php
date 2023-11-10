@@ -1,6 +1,7 @@
 <?php
-require_once "MyPHP.php";
-require_once "CompareFunctions.php";
+
+namespace App\classes;
+
 
 
 /**
@@ -81,12 +82,12 @@ class TestMyPHP
         $message .= "\033[31m start Failure\033[0m" . PHP_EOL;
         $message .= "pour les arguments :" . PHP_EOL;
         foreach ($testResult["arguments"] as $argument) {
-            $message .= $this->writeArgument($argument);
+            $message .= $this->writeArgument($argument) . PHP_EOL;
         }
         $message = substr($message, 0, -1) . PHP_EOL;
         foreach ($testResult["functions"] as $function => $result) {
 
-            $message .= $function . " return " . $this->writeArgument($result) . PHP_EOL;
+            $message .= PHP_EOL . $function . " return " . $this->writeArgument($result);
         }
         $message .= "\033[31m end Failure\033[0m" . PHP_EOL;
         return $message;
@@ -105,10 +106,12 @@ class TestMyPHP
         if (gettype($argument) === "array") {
             $message .= "(array " . count($argument) . ")" . "[" . PHP_EOL;
             foreach ($argument as $key => $value) {
-                $message .= $this->writeTypeOfVariable($key) . "=>" . $this->writeArgument($value) . PHP_EOL;
+                $message .= $this->writeTypeOfVariable($key) . "=> " . $this->writeArgument($value) . PHP_EOL;
             }
             $message .= "],";
-        } else {
+        } /* elseif (gettype($argument) === 'object') {
+            $message .= PHP_EOL . "\033[31m" . $this->writeArgument((array)$argument) . "\033[0m" . PHP_EOL;
+        } */ else {
             $message .= $this->writeTypeOfVariable($argument);
         }
 

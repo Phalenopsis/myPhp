@@ -1,5 +1,7 @@
 <?php
 
+namespace App\classes;
+
 /**
  * Try to redo some php functions
  */
@@ -183,5 +185,66 @@ class MyPHP
             }
         }
         return $return;
+    }
+
+    public function my_array_filter(array $array, ?callable $callback = null, int $mode = 0): array
+    {
+        $result = [];
+        foreach ($array as $key => $value) {
+            if ($callback === null) {
+                if ($value) {
+                    $result[$key] = $value;
+                }
+            } elseif ($mode === ARRAY_FILTER_USE_KEY) {
+                if ($callback($key)) {
+                    $result[$key] = $value;
+                }
+            } elseif ($mode === ARRAY_FILTER_USE_BOTH) {
+                if ($callback($value, $key)) {
+                    $result[$value] = $value;
+                }
+            } else {
+                if ($callback($value)) {
+                    $result[$key] = $value;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    public function my_array_search(mixed $needle, array $haystack, bool $strict = false): int|string|false
+    {
+        foreach ($haystack as $key => $value) {
+            if ($strict) {
+                if ($value === $needle) {
+                    return $key;
+                }
+            } else {
+                if ($value == $needle) {
+                    return $key;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function my_array_reverse(array $array, bool $preserve_keys = false): array
+    {
+        $result = [];
+        for ($i = count($array) - 1; $i >= 0; $i -= 1) {
+            $key = array_keys($array)[$i];
+            if ($preserve_keys) {
+                $result[$key] = $array[$key];
+            } else {
+                if (is_numeric($key)) {
+                    $result[] = $array[$key];
+                } else {
+                    $result[$key] = $array[$key];
+                }
+            }
+        }
+
+        return $result;
     }
 }

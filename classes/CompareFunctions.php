@@ -1,5 +1,7 @@
 <?php
 
+namespace App\classes;
+
 class CompareFunction
 {
     private object $whichFunctions;

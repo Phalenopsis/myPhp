@@ -1,6 +1,10 @@
 <?php
-require_once "classes/TestMyPHP.php";
-require_once "classes/MyPHP.php";
+
+require 'classes/CompareFunctions.php';
+require 'classes/MyPHP.php';
+require 'classes/TestMyPHP.php';
+
+use App\classes\TestMyPHP;
 
 /* // name of original function
 $functionTested = "array_key_exists";
@@ -62,7 +66,7 @@ $test4 = ['Bonjour1', 'Bonjour'];
 $test5 = ['aaaa', 'zzz'];
 $test6 = ['zzz', 'aaaa'];
 */
-
+/* 
 $function = 'array_is_list';
 $function = 'array_flip';
 
@@ -78,8 +82,90 @@ $tab8 = [1, 2, true, 4, 5, 6, 7, 1, 11, 12.3, 13, 14, 15, 16];
 
 
 $tests = [[$tab], [$tab1], [$tab2], [$tab3], [$tab4], [$tab5], [$tab6], [$tab7], [$tab8]];
-new TestMyPHP($function, $tests);
+new TestMyPHP($function, $tests); */
 
 //var_dump(3 === '3');
 
 //var_dump(array_is_list($tab7));
+
+function odd($var)
+{
+    // retourne si l'entier en entrée est impair
+    return $var & 1;
+}
+
+function even($var)
+{
+    // retourne si l'entier en entrée est pair
+    return !($var & 1);
+}
+
+$even = 'even';
+$odd = 'odd';
+
+$function = 'array_filter';
+$array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+$array2 = [6, 7, 8, 9, 10, 11, 12];
+
+$entry = [
+    0 => 'foo',
+    1 => false,
+    2 => -1,
+    3 => null,
+    4 => '',
+    5 => '0',
+    6 => 0,
+];
+
+$arr = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4];
+
+/* var_dump(array_filter($arr, function ($k) {
+    return $k == 'b';
+}, ARRAY_FILTER_USE_KEY));
+
+var_dump(array_filter($arr, function ($v, $k) {
+    return $k == 'b' || $v == 4;
+}, ARRAY_FILTER_USE_BOTH)); */
+
+/* function testfunc1($k)
+{
+    return $k == 'b';
+};
+$testfunc1 = 'testfunc1';
+function testfunc2($v, $k)
+{
+    return $k == 'b' || $v == 4;
+};
+$testfunc2 = 'testfunc2';
+
+$tests = [
+    [$array1, $even], [$array2, $even], [$array1, $odd], [$array2, $odd], [$entry],
+    [$arr, $testfunc1, ARRAY_FILTER_USE_KEY],
+    [$arr, $testfunc2, ARRAY_FILTER_USE_BOTH],
+    [$arr, function ($k) {
+        return $k == 'b';
+    }, ARRAY_FILTER_USE_KEY]
+];
+new TestMyPHP($function, $tests); */
+
+$array = array(0 => 'blue', 1 => 'red', 2 => 'green', 3 => 'red');
+
+/* $key = array_search('green', $array); // $key = 2;
+$key = array_search('red', $array);   // $key = 1; */
+
+
+//new TestMyPHP('array_search', $tests);
+
+$array2 = ["php", 4.0, array("green", "red")];
+
+$tests = [
+    [$array],
+    [$array2],
+    [$array2, true],
+    [[1, 2, 3, 4, 5]]
+];
+new TestMyPHP('array_reverse', $tests);
+
+/* 
+$my_php = new MyPHP();
+var_dump($my_php->my_array_search('green', $array)); */

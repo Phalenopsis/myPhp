@@ -149,5 +149,154 @@ $tab = ['4' => 25, '7' => 78];
 
 //var_dump(array_flip($tab));
 
-$tab2 = [1, 2, 3, 4, 5, 6, 7, 1, 11, 12, 13, 14, 15, 16];
-var_dump(array_flip($tab2));
+/* $tab2 = [1, 2, 3, 4, 5, 6, 7, 1, 11, 12, 13, 14, 15, 16];
+var_dump(array_flip($tab2)); */
+function odd($var)
+{
+    // retourne si l'entier en entrée est impair
+    return $var & 1;
+}
+
+function even($var)
+{
+    // retourne si l'entier en entrée est pair
+    return !($var & 1);
+}
+
+$array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+$array2 = [6, 7, 8, 9, 10, 11, 12];
+
+/* echo "Impair :\n";
+print_r(array_filter($array1, "odd"));
+echo "Pair :\n";
+print_r(array_filter($array2, "even")); */
+/* 
+function my_array_filter(array $array, ?callable $callback = null, int $mode = 0): array
+{
+    $result = [];
+
+    foreach ($array as $key => $value) {
+        if ($mode === 'ARRAY_FILTER_USE_KEY') {
+            if ($callback($key)) {
+                $result[$key] = $value;
+            }
+        } elseif ($mode === 'ARRAY_FILTER_USE_BOTH') {
+            if ($callback($key, $value)) {
+                $result[$key] = $value;
+            }
+        } else {
+            if ($callback($value)) {
+                $result[$key] = $value;
+            }
+        }
+    }
+
+    return $result;
+}
+
+print_r(array_filter($array1, "even"));
+print_r(my_array_filter($array1, "even"));
+ */
+/* 
+function my_str_contains(string $haystack, string $needle): bool
+{
+    if ($needle === '') {
+        return true;
+    }
+    for ($searchInHaystack = 0; $searchInHaystack < strlen($haystack) - strlen($needle) + 1; $searchInHaystack += 1) {
+
+        for ($searchInNeedle = 0; $searchInNeedle < strlen($needle); $searchInNeedle += 1) {
+            if (my_compare($haystack[$searchInHaystack + $searchInNeedle], $needle[$searchInNeedle])) {
+                if ($searchInNeedle === strlen($needle) - 1) {
+
+                    return true;
+                }
+                //ne fait rien
+            } else {
+                break;
+            }
+        }
+    }
+
+    return false;
+}
+
+function my_compare(string $haystackLetter, string $needleLetter): bool
+{
+    if ($haystackLetter === $needleLetter) {
+        return true;
+    }
+
+    return false;
+}
+
+
+$haystack = 'the lazy fox';
+
+$needle = 'lazy';
+
+var_dump(my_str_contains($haystack, $needle));
+ */
+
+
+$array = ['name' => 'chat'];
+
+/* function mergeArrays(?array ...$arrays): array
+{
+    $result = [];
+    foreach ($arrays as $array) {
+        if ($array !== null) {
+            $result = array_merge($result, $array);
+        }
+    }
+    return $result;
+}
+
+var_dump(mergeArrays($array, null));
+
+$var1 = "array";
+$var2 = 'result';
+
+$$var2 = mergeArrays($$var1, null);
+var_dump($result); */
+
+/* function my_array_search(mixed $needle, array $haystack, bool $strict = false): int|string|false
+{
+    foreach ($haystack as $key => $value) {
+        /* if ($strict) {
+            if ($value === $needle) {
+                return $key;
+            }
+        } else { 
+        if ($value == $needle) {
+            echo $value . " " . $needle;
+            return $key;
+        }
+        //}
+        return false;
+    }
+} */
+
+function my_array_reverse(array $array, bool $preserve_keys = true): array
+{
+    $result = [];
+    for ($i = count($array) - 1; $i >= 0; $i -= 1) {
+        $key = array_keys($array)[$i];
+        if ($preserve_keys) {
+            $result[$key] = $array[$key];
+        } else {
+            if (is_numeric($key)) {
+                $result[] = $array[$key];
+            } else {
+                $result[$key] = $array[$key];
+            }
+        }
+    }
+
+    return $result;
+}
+
+$array = [1, 'tres' => 2, 3, 4];
+
+var_dump("PHP", array_reverse($array, false));
+var_dump("MY", my_array_reverse($array, false));
