@@ -2,21 +2,17 @@
 
 namespace App\classes;
 
-
-
 /**
  * Use to test and compare methods from MyPhp and native PHP
  * tests passed to TestMyPHP must be an array contains array tests 
  */
 class TestMyPHP
 {
-
     private object $myPHP;
     private object $compareFunction;
     private string $originalFunction;
     private string $myFunction;
     private array $tests;
-
 
     public function __construct(string $function, array $tests)
     {

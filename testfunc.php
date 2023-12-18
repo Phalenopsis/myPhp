@@ -277,26 +277,37 @@ var_dump($result); */
     }
 } */
 
-function my_array_reverse(array $array, bool $preserve_keys = true): array
+// function my_array_reverse(array $array, bool $preserve_keys = true): array
+// {
+//     $result = [];
+//     for ($i = count($array) - 1; $i >= 0; $i -= 1) {
+//         $key = array_keys($array)[$i];
+//         if ($preserve_keys) {
+//             $result[$key] = $array[$key];
+//         } else {
+//             if (is_numeric($key)) {
+//                 $result[] = $array[$key];
+//             } else {
+//                 $result[$key] = $array[$key];
+//             }
+//         }
+//     }
+
+//     return $result;
+// }
+
+// $array = [1, 'tres' => 2, 3, 4];
+
+// var_dump("PHP", array_reverse($array, false));
+// var_dump("MY", my_array_reverse($array, false));
+
+
+function my_str_starts_with(string $haystack, string $needle): bool
 {
-    $result = [];
-    for ($i = count($array) - 1; $i >= 0; $i -= 1) {
-        $key = array_keys($array)[$i];
-        if ($preserve_keys) {
-            $result[$key] = $array[$key];
-        } else {
-            if (is_numeric($key)) {
-                $result[] = $array[$key];
-            } else {
-                $result[$key] = $array[$key];
-            }
+    for ($i = 0; $i < strlen($needle); $i++) {
+        if ($needle[$i] !== $haystack[$i]) {
+            return false;
         }
     }
-
-    return $result;
+    return true;
 }
-
-$array = [1, 'tres' => 2, 3, 4];
-
-var_dump("PHP", array_reverse($array, false));
-var_dump("MY", my_array_reverse($array, false));

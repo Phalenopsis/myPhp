@@ -164,8 +164,44 @@ $tests = [
     [$array2, true],
     [[1, 2, 3, 4, 5]]
 ];
-new TestMyPHP('array_reverse', $tests);
+//new TestMyPHP('array_reverse', $tests);
 
 /* 
 $my_php = new MyPHP();
 var_dump($my_php->my_array_search('green', $array)); */
+
+
+/* $function = 'array_fill_keys';
+
+$keys = array('foo', 5, 10, 'bar');
+
+$tests = [
+    [$keys, 'banana']
+];
+
+new TestMyPHP($function, $tests); */
+
+
+$function = 'implode';
+
+$array = ['je', 'suis', 'heureux', 'à', 'la', 'wild'];
+$sep = ' ';
+
+$tests = [
+    [$sep, $array]
+];
+
+
+$function = 'str_starts_with';
+
+$haystack = 'The lazy dog';
+$needle = 'The';
+$needle2 = 'Tne';
+
+$tests = [
+    [$haystack, $needle],
+    [$haystack, $needle2],
+];
+
+
+new TestMyPHP($function, $tests);

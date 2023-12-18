@@ -27,7 +27,6 @@ class CompareFunction
         }
     }
 
-
     /**
      * compare the result of 2 functions
      *

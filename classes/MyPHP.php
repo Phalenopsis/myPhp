@@ -247,4 +247,34 @@ class MyPHP
 
         return $result;
     }
+
+    public function  my_array_fill_keys(array $keys, mixed $value): array
+    {
+        $return = [];
+
+        foreach ($keys as $key) {
+            $return[$key] = $value;
+        }
+
+        return $return;
+    }
+
+    public function my_implode(string $separator, array $array): string
+    {
+        $result = $array[0];
+        for ($i = 1; $i < count($array); $i++) {
+            $result .= $separator . $array[$i];
+        }
+        return $result;
+    }
+
+    public function my_str_starts_with(string $haystack, string $needle): bool
+    {
+        for ($i = 0; $i < strlen($needle); $i++) {
+            if ($needle[$i] !== $haystack[$i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
