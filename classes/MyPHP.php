@@ -270,14 +270,18 @@ class MyPHP
 
     public function my_str_starts_with(string $haystack, string $needle): bool
     {
-        if (strlen($needle) > strlen($haystack)) {
+        $lenNeedle = strlen($needle);
+        if ($lenNeedle > strlen($haystack)) {
             return false;
         }
-        for ($i = 0; $i < strlen($needle); $i++) {
-            if ($needle[$i] !== $haystack[$i]) {
-                return false;
-            }
-        }
-        return true;
+        // for ($i = 0; $i < $lenNeedle; $i++) {
+        //     if ($needle[$i] !== $haystack[$i]) {
+        //         return false;
+        //     }
+        // }
+        // return true;
+
+        for ($i = 0; $i < $lenNeedle && $haystack[$i] === $needle[$i]; $i++);
+        return $i === $lenNeedle;
     }
 }
