@@ -315,4 +315,13 @@ class MyPHP
 
         return false;
     }
+
+    private function my_substr(string $haystack, int $offset): string
+    {
+        $result = '';
+        for ($i = $offset; $i < strlen($haystack); $i += 1) {
+            $result .= $haystack[$i];
+        }
+        return $result;
+    }
 }
