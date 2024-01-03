@@ -324,4 +324,34 @@ class MyPHP
         }
         return $result;
     }
+
+    /**
+     * return index of needle in haystack
+     *
+     * @param string $haystack
+     * @param string $needle
+     * @return integer
+     */
+    private function my_str_find(string $haystack, string $needle): int
+    {
+        if ($needle === '') {
+            return true;
+        }
+        for ($searchInHaystack = 0; $searchInHaystack < strlen($haystack) - strlen($needle) + 1; $searchInHaystack += 1) {
+
+            for ($searchInNeedle = 0; $searchInNeedle < strlen($needle); $searchInNeedle += 1) {
+                if ($this->my_str_compare($haystack[$searchInHaystack + $searchInNeedle], $needle[$searchInNeedle])) {
+                    if ($searchInNeedle === strlen($needle) - 1) {
+
+                        return $searchInHaystack;
+                    }
+                    //ne fait rien
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return -1;
+    }
 }
