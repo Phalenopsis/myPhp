@@ -354,4 +354,25 @@ class MyPHP
 
         return -1;
     }
+
+    public function my_substr_count(
+        string $haystack,
+        string $needle,
+        int $offset = 0,
+        ?int $length = null
+    ): int {
+        $nbOccurrences = 0;
+        $continue = true;
+        while ($continue) {
+            $isFind = $this->my_str_find($haystack, $needle);
+            if ($isFind != -1) {
+                $nbOccurrences += 1;
+                $offset = $isFind + strlen($needle);
+                $haystack = $this->my_substr($haystack, $offset);
+            } else {
+                $continue = false;
+            }
+        }
+        return $nbOccurrences;
+    }
 }
