@@ -136,7 +136,6 @@ class MyPHP
 
     public function my_strcmp($string1, $string2): int
     {
-
         $charCompare = 0;
 
         $i = 0;
@@ -283,5 +282,14 @@ class MyPHP
 
         for ($i = 0; $i < $lenNeedle && $haystack[$i] === $needle[$i]; $i++);
         return $i === $lenNeedle;
+    }
+
+    private function my_str_compare(string $haystackLetter, string $needleLetter): bool
+    {
+        if ($haystackLetter === $needleLetter) {
+            return true;
+        }
+
+        return false;
     }
 }
