@@ -194,14 +194,20 @@ $tests = [
 
 $function = 'str_starts_with';
 
-$haystack = 'The lazy dog';
+$haystack = 'The lazy dog. The nice cat';
 $needle = 'The';
 $needle2 = 'Tne';
 
 $tests = [
     [$haystack, $needle],
     [$haystack, $needle2],
+    ['Ceci est un test', 'est'],
+    ['Ceci eest un test', 'est']
 ];
+
+
+
+$function = 'substr_count';
 
 
 new TestMyPHP($function, $tests);
