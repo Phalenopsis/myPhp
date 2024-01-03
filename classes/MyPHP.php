@@ -292,4 +292,27 @@ class MyPHP
 
         return false;
     }
+
+    public function my_str_contains(string $haystack, string $needle): bool
+    {
+        if ($needle === '') {
+            return true;
+        }
+        for ($searchInHaystack = 0; $searchInHaystack < strlen($haystack) - strlen($needle) + 1; $searchInHaystack += 1) {
+
+            for ($searchInNeedle = 0; $searchInNeedle < strlen($needle); $searchInNeedle += 1) {
+                if ($this->my_str_compare($haystack[$searchInHaystack + $searchInNeedle], $needle[$searchInNeedle])) {
+                    if ($searchInNeedle === strlen($needle) - 1) {
+
+                        return true;
+                    }
+                    //ne fait rien
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return false;
+    }
 }
