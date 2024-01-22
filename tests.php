@@ -202,12 +202,38 @@ $tests = [
     [$haystack, $needle],
     [$haystack, $needle2],
     ['Ceci est un test', 'est'],
-    ['Ceci eest un test', 'est']
+    ['Ceci eest un test', 'est'],
+    ['Ceci eest un test', 'est', 1, 5],
+    ['Ceci eest un test', 'est', 1, 0],
+    ['Ceci eest un test', 'est', -5, 4],
+    ['Ceci eest un test', 'est', 5, -1],
+    ['Ceci eest un test', 'est', -16, 16],
+    ['Ceci eest un test', 'e', -16, 5],
+    ['Ceci eest un test', 'e', -16, -1],
+    ['Ceci eest un test', 'es', -16, -1],
 ];
 
 
 
 $function = 'substr_count';
 
+
+$function = 'str_pad';
+$tests = [
+    ['alien', 3],
+    ['alien', 10],
+    ['alien', 10, 'al'],
+    ['alien', 10, 'al', STR_PAD_LEFT],
+    ['alie', 10, 'al'],
+    ['alie', 10, 'ali'],
+    ['alie', 10, '*', STR_PAD_BOTH],
+    ['alie', 10, '*-', STR_PAD_BOTH],
+    ['alie', 25, '*-/', STR_PAD_BOTH],
+    ['alie', 24, '*-/', STR_PAD_BOTH],
+    ['alien', 24, '*-/', STR_PAD_BOTH],
+    ['alien', 25, '*-/', STR_PAD_BOTH],
+
+
+];
 
 new TestMyPHP($function, $tests);
