@@ -316,10 +316,15 @@ class MyPHP
         return false;
     }
 
-    private function my_substr(string $haystack, int $offset, int $length = 0): string
+    private function my_substr(string $haystack, int $offset, ?int $length = null): string
     {
         $result = '';
-        for ($i = $offset; $i < strlen($haystack) - $length; $i += 1) {
+        if ($length === null) {
+            $limit = strlen($haystack);
+        } else {
+            $limit = $offset + $length;
+        }
+        for ($i = $offset; $i < $limit; $i += 1) {
             $result .= $haystack[$i];
         }
         return $result;
@@ -361,6 +366,43 @@ class MyPHP
         int $offset = 0,
         ?int $length = null
     ): int {
+        $haystackLength = strlen($haystack);
+
+
+
+        if ($length !== null) {
+            if (abs($offset) + abs($length) > $haystackLength) {
+                // Uncaught ValueError
+            }
+            if ($offset >= 0 && $length > 0) {
+                $haystack = $this->my_substr($haystack, $offset, $length);
+            } elseif ($offset > 0 && $length < 0) {
+                $haystack = $this->my_substr($haystack, $offset, $haystackLength - $offset + $length);
+            } elseif ($offset < 0 && $length > 0) {
+                $haystack = $this->my_substr($haystack, $haystackLength + $offset, $length);
+            } elseif ($offset < 0 && $length < 0) {
+                $haystack = $this->my_substr($haystack, $haystackLength + $offset, $haystackLength - ($haystackLength + $offset) + $length);
+            } else {
+                return 0;
+            }
+        }
+
+        // $haystack_len = isset($length) ? $offset + $length : strlen($haystack);
+
+        // $occur = 0;
+        // $haystack_len = strlen($haystack);
+        // $needle_len = strlen($needle);
+        // for ($i = $offset; $i < $haystack_len; $i++) {
+        //     for ($y = 0; $y < $needle_len &&
+        //         $i + $y < $haystack_len &&
+        //         $haystack[$i + $y] === $needle[$y]; $y++) {
+        //         if ($y === $needle_len - 1) {
+        //             $occur += 1;
+        //         }
+        //     }
+        // }
+        // return $occur;
+
         $nbOccurrences = 0;
         $continue = true;
         while ($continue) {
@@ -374,5 +416,41 @@ class MyPHP
             }
         }
         return $nbOccurrences;
+    }
+
+    public function my_str_pad(
+        string $string,
+        int $length,
+        string $pad_string = " ",
+        int $pad_type = STR_PAD_RIGHT
+    ): string {
+
+        $initialLength = strlen($string);
+        if ($length < $initialLength) {
+            return $string;
+        }
+
+        $padLeft = '';
+        $padRight = '';
+        $padLen = strlen($pad_string);
+
+        if ($pad_type === STR_PAD_RIGHT) {
+            for ($i = 0; $i < $length - $initialLength; $i++) {
+                $padRight .= $pad_string[($i % $padLen)];
+            }
+        } elseif ($pad_type === STR_PAD_LEFT) {
+            for ($i = 0; $i < $length - $initialLength; $i++) {
+                $padLeft .= $pad_string[($i % $padLen)];
+            }
+        } elseif ($pad_type === STR_PAD_BOTH) {
+            for ($i = 0; $i < ceil(($length - $initialLength) / 2); $i++) {
+                $padRight .= $pad_string[($i % $padLen)];
+            }
+            for ($i = 0; $i < floor(($length - $initialLength) / 2); $i++) {
+                $padLeft .= $pad_string[($i % $padLen)];
+            }
+        }
+
+        return $padLeft . $string . $padRight;
     }
 }
