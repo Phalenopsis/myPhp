@@ -236,4 +236,11 @@ $tests = [
 
 ];
 
+$function = 'str_split';
+$tests = [
+    ['chat'],
+    ['chat', 2],
+    ['éléphant', 3]
+];
+
 new TestMyPHP($function, $tests);

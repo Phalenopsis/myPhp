@@ -453,4 +453,18 @@ class MyPHP
 
         return $padLeft . $string . $padRight;
     }
+
+    public function my_str_split(string $string, int $length = 1): array
+    {
+        $len = strlen($string);
+        $arr = [];
+        for ($i = 0; $i < $len; $i += $length) {
+            $s = '';
+            for ($j = $i; $j < min([$i + $length, $len]); $j += 1) {
+                $s .= $string[$j];
+            }
+            $arr[] = $s;
+        }
+        return $arr;
+    }
 }
